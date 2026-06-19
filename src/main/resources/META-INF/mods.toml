@@ -1,0 +1,25 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MPL-2.0"
+
+[[mods]]
+modId = "neotowns"
+version = "0.0.1"
+displayName = "NeoTowns"
+logoFile = "neotowns.png"
+credits = "hisoka"
+authors = "hisoka"
+displayURL = "https://github.com/hisoka-root/neotowns"
+description = '''
+A geopolitical simulation mod for NeoForge.
+Server-side only. Adds a three-tier government system: Town -> State -> Nation,
+with land claiming, taxation, diplomacy, war, and map integration.
+'''
+
+[[dependencies.neotowns]]
+    modId = "neoforge"
+    mandatory = true
+    type = "required"
+    versionRange = "[21.1.233,)"
+    ordering = "NONE"
+    side = "SERVER"

@@ -1,0 +1,96 @@
+[economy]
+town_founding_cost = 64
+chunk_claim_cost = 16
+outpost_claim_multiplier = 5
+town_upkeep_per_chunk = 1
+state_founding_cost = 512
+state_upkeep_per_town = 32
+nation_founding_cost = 4096
+nation_upkeep_per_state = 128
+plot_min_price = 1
+embassy_open_cost = 64
+war_declaration_cost = 256
+war_surrender_penalty = 128
+truce_cost = 64
+govtype_change_cost = 256
+election_entry_cost = 8
+vassal_liberation_fee = 512
+starting_grant_emeralds = 32
+
+[towns]
+min_residents_to_found = 1
+base_claims = 16
+claims_per_resident = 8
+max_claims_hard_cap = 1024
+debt_grace_days = 3
+upkeep_use_minecraft_days = true
+upkeep_minecraft_day_interval = 1
+upkeep_real_time_hours = 24
+allow_unaffiliated_towns = true
+
+[states]
+min_towns = 3
+max_towns = 64
+invitation_window_hours = 48
+
+[nations]
+min_states = 2
+max_states = 16
+
+[diplomacy]
+war_min_duration_hours = 24
+war_warning_period_hours = 24
+vassal_tribute_percentage = 10
+
+[elections]
+election_interval_real_days = 30
+voting_window_hours = 48
+allow_reelection = true
+max_consecutive_terms = 3
+no_confidence_threshold_pct = 60
+coup_threshold_pct = 75
+
+[protection]
+wilderness_build_default = true
+allow_machines_in_town = false
+watchdog_enabled = true
+watchdog_tick_interval = 200
+watchdog_rollback = false
+deny_create_contraptions = true
+deny_pistons_across_claims = true
+preferred_integration = "auto"
+
+[teleport]
+spawn_cooldown_seconds = 30
+spawn_warmup_seconds = 3
+allow_spawn_in_combat = false
+
+[database]
+type = "sqlite"
+path = "world/neotowns/neotowns.db"
+host = "localhost:3306"
+name = "neotowns"
+user = "neotowns"
+password = ""
+pool_size = 10
+
+[maps]
+update_debounce_ms = 2000
+town_fill_opacity = 0.35
+state_border_width = 3
+nation_border_width = 5
+show_treasury_in_popup = true
+show_resident_count_in_popup = true
+nation_capital_icon = "star"
+
+[maps.ftbmap]
+synthetic_teams = true
+defer_ftbchunks_protection = true
+
+[maps.xaero]
+push_waypoints_on_login = true
+waypoint_prefix = "[NT] "
+
+[maps.journeymap]
+push_waypoints_on_login = true
+push_territory_polygons = true
