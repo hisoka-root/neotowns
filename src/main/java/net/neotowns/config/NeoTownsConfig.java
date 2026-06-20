@@ -35,6 +35,10 @@ public final class NeoTownsConfig {
     private int warMinDurationHours = 24;
     private int warWarningPeriodHours = 24;
     private int vassalTributePercentage = 10;
+    private int warDeclarationCost = 256;
+    private int warSurrenderPenalty = 128;
+    private int truceCost = 64;
+    private int govtypeChangeCost = 256;
     private int electionIntervalRealDays = 30;
     private int votingWindowHours = 48;
     private boolean allowReelection = true;
@@ -110,6 +114,10 @@ public final class NeoTownsConfig {
         warMinDurationHours = config.getOrElse("diplomacy.war_min_duration_hours", warMinDurationHours);
         warWarningPeriodHours = config.getOrElse("diplomacy.war_warning_period_hours", warWarningPeriodHours);
         vassalTributePercentage = config.getOrElse("diplomacy.vassal_tribute_percentage", vassalTributePercentage);
+        warDeclarationCost = config.getOrElse("economy.war_declaration_cost", warDeclarationCost);
+        warSurrenderPenalty = config.getOrElse("economy.war_surrender_penalty", warSurrenderPenalty);
+        truceCost = config.getOrElse("economy.truce_cost", truceCost);
+        govtypeChangeCost = config.getOrElse("economy.govtype_change_cost", govtypeChangeCost);
         electionIntervalRealDays = config.getOrElse("elections.election_interval_real_days", electionIntervalRealDays);
         votingWindowHours = config.getOrElse("elections.voting_window_hours", votingWindowHours);
         allowReelection = config.getOrElse("elections.allow_reelection", allowReelection);
@@ -165,6 +173,10 @@ public final class NeoTownsConfig {
     public int getWarMinDurationHours() { return warMinDurationHours; }
     public int getWarWarningPeriodHours() { return warWarningPeriodHours; }
     public int getVassalTributePercentage() { return vassalTributePercentage; }
+    public int getWarDeclarationCost() { return warDeclarationCost; }
+    public int getWarSurrenderPenalty() { return warSurrenderPenalty; }
+    public int getTruceCost() { return truceCost; }
+    public int getGovtypeChangeCost() { return govtypeChangeCost; }
     public int getElectionIntervalRealDays() { return electionIntervalRealDays; }
     public int getVotingWindowHours() { return votingWindowHours; }
     public boolean isAllowReelection() { return allowReelection; }
