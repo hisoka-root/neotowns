@@ -23,3 +23,24 @@ with land claiming, taxation, diplomacy, war, and map integration.
     versionRange = "[21.1.233,)"
     ordering = "NONE"
     side = "SERVER"
+
+[[dependencies.neotowns]]
+    modId = "journeymap"
+    type = "optional"
+    versionRange = "[6.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.neotowns]]
+    modId = "xaerominimap"
+    type = "optional"
+    versionRange = "[26.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.neotowns]]
+    modId = "xaeroworldmap"
+    type = "optional"
+    versionRange = "[1.41,)"
+    ordering = "NONE"
+    side = "BOTH"

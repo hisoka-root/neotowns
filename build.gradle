@@ -15,11 +15,9 @@ runs {
         systemProperty 'forge.logging.console.level', 'debug'
         modSource project.sourceSets.main
     }
-
     client {
         systemProperty 'neotowns.server', 'false'
     }
-
     server {
         argument '--nogui'
     }
@@ -27,21 +25,33 @@ runs {
 
 repositories {
     mavenCentral()
-    maven { url = 'https://repo.luckperms.net/' }
-    maven { url = 'https://maven.saps.dev/minecraft' }
     maven { url = 'https://jitpack.io' }
+    maven { url = 'https://maven.blamejared.com' }
+    maven { name = 'Xaero'; url = 'https://chocolateminecraft.com/maven' }
+    maven { name = 'FTB'; url = 'https://maven.ftb.dev/releases' }
+    maven { name = 'Architectury'; url = 'https://maven.architectury.dev' }
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-
-    // Database
     implementation "org.xerial:sqlite-jdbc:3.45.3.0"
     implementation "com.zaxxer:HikariCP:5.1.0"
     compileOnly "com.mysql:mysql-connector-j:8.4.0"
-
-    // Permissions (compile-only — checker pattern, not bundled)
     compileOnly "net.luckperms:api:5.4"
+
+    // Map integrations — resolved from maven where possible
+    compileOnly group: 'info.journeymap', name: 'journeymap-api-neoforge', version: '2.0.0-1.21.1', changing: true
+    compileOnly "xaero.minimap:xaerominimap-neoforge-1.21.1:26.1.0"
+    compileOnly "dev.ftb.mods:ftb-chunks-neoforge:2101.1.19"
+    compileOnly "dev.ftb.mods:ftb-teams-neoforge:2101.1.10"
+    compileOnly "dev.ftb.mods:ftb-library-neoforge:2101.1.32"
+
+    // Local jars — only for mods not available on any public maven
+    compileOnly fileTree(dir: 'libs', include: '*.jar')
 }
 
 tasks.withType(JavaCompile).configureEach {

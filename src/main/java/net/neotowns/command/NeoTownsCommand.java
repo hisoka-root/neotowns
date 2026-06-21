@@ -6,6 +6,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.neotowns.config.NeoTownsConfig;
 import net.neotowns.data.DatabaseManager;
+import net.neotowns.map.MapIntegrationRegistry;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
@@ -35,6 +36,9 @@ public final class NeoTownsCommand {
                 .then(literal("backup")
                     .requires(src -> src.hasPermission(2))
                     .executes(NeoTownsCommand::executeBackup))
+                .then(literal("mapreload")
+                    .requires(src -> src.hasPermission(2))
+                    .executes(NeoTownsCommand::executeMapReload))
         );
     }
 
@@ -57,6 +61,13 @@ public final class NeoTownsCommand {
         DatabaseManager.backup(backupDir);
         ctx.getSource().sendSuccess(() ->
             Component.literal("NeoTowns backup saved to " + backupDir), true);
+        return 1;
+    }
+
+    private static int executeMapReload(CommandContext<CommandSourceStack> ctx) {
+        MapIntegrationRegistry.rebuildAll(ctx.getSource().getServer());
+        ctx.getSource().sendSuccess(() ->
+            Component.literal("Rebuilt all map overlays."), true);
         return 1;
     }
 }

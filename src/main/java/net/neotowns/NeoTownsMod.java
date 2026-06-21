@@ -7,6 +7,7 @@ import net.neotowns.data.ChunkOwnershipCache;
 import net.neotowns.data.DatabaseManager;
 import net.neotowns.data.NeoTownsCache;
 import net.neotowns.handler.ServerLifecycleHandler;
+import net.neotowns.map.MapIntegrationRegistry;
 import net.neotowns.permissions.PermissionsIntegrationRegistry;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -48,6 +49,9 @@ public class NeoTownsMod {
 
         // Permissions integration
         PermissionsIntegrationRegistry.init(config.getPreferredIntegration());
+
+        // Map integrations
+        MapIntegrationRegistry.init();
 
         // Commands
         NeoTownsCommand.register();

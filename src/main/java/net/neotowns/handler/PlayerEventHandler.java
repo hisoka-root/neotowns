@@ -1,8 +1,8 @@
 package net.neotowns.handler;
 
 import com.mojang.logging.LogUtils;
-import net.neotowns.NeoTownsMod;
 import net.neotowns.data.NeoTownsCache;
+import net.neotowns.map.MapIntegrationRegistry;
 import net.neotowns.model.TownData;
 import net.neotowns.util.Messenger;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -27,11 +27,8 @@ public final class PlayerEventHandler {
             if (town.isMayor(player.getUUID())) {
                 Messenger.info(player, "You are the §6Mayor§f. Use §e/town§f to manage your town.");
             }
+            // Push waypoints via active map integrations
+            MapIntegrationRegistry.getActive().forEach(i -> i.onTownFounded(town));
         }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
-        // no-op for now; reserved for cleanup
     }
 }

@@ -22,3 +22,7 @@ Thumbs.db
 
 # NeoForged
 run/
+
+# Local API jars (not available on public mavens)
+libs/*.jar
+!libs/README.md
